@@ -241,7 +241,7 @@
 
                     // Query dasar
                     $sql_query = "SELECT id_kategori, nm_kategori FROM
-                    tb_ktg";
+                    tb_kategori";
 
                     // Jika ada pencarian, tambahkan kondisi WHERE 
                     if (!empty($query)) {
@@ -322,7 +322,7 @@
       <!-- You can delete the links only if you purchased the pro version. -->
       <!-- Licensing information: https://bootstrapmade.com/license/ -->
       <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      Designed by <a href="https://www.instagram.com/yoikirain24_?igsh=ZG9jNjE0emRsY3lz/" target="_blank">Rain Martani Amarrosuli</a></a>
     </div>
   </footer><!-- End Footer -->
 
