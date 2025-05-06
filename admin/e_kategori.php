@@ -1,27 +1,25 @@
 <?php
 include "koneksi.php";
+if (isset($_POST['simpan'])) {
+  $auto = mysqli_query($koneksi, "select max(id_kategori) as max_code from tb_kategori");
+  $hasil = mysqli_fetch_array($auto);
+  $code = $hasil['max_code'];
+  $urutan = (int)substr($code, 1, 3);
+  $urutan++;
+  $huruf = "K";
+  $id_kategori = $huruf . sprintf("%03s", $urutan);
+  $nm_kategori = $_POST['nm_kategori'];
 
-if (isset($_post['simpan'])) {
-    $auto = mysqli_query($koneksi, "select max(id_kategori) as max_code from 
-    tb_kategori");
-    $hasil = mysqli_fetch_array($auto);
-    $code = $hasil['max_code'];
-    $urutan = (int)substr($code, 1, 3);
-    $urutan++;
-    $huruf = "K"
-    $id_kategori = $huruf . sprintf("%03s", $urutan);
-    $nm_kategori = $_POST['nm_kategori'];
-
-    $query = mysqli_query($koneksi, "INSERT INTO tb_kategori(id_kategori,
-    nm_kategori) VALUES ('$id_kategori', '$nm_kategori')");
-    if ($query) {
-      echo "<script>alert('Data berhasil ditambahkan')</script>";
-      header("refresh:0, kategori.php");
-    } else {
-        echo "<script>alert('Data gagal ditambahkan!')</script>";
-        header("refresh:0, kategori.php");
-    }
-}   
+  $query = mysqli_query($koneksi, "INSERT INTO tb_kategori(id_kategori, nm_kategori) VALUES ('$id_kategori', '$nm_kategori')");
+  if ($query) {
+    echo "<script>alert('Data berhasil ditambahkan!')</script>";
+    header("refresh:0, kategori.php");
+  } else {
+    echo "<script>alert('Data gagal ditambahkan!')</script>";
+    header("refresh:0, kategori.php");
+  }
+}
+?>
 
 
 <!DOCTYPE html>
@@ -237,45 +235,19 @@ if (isset($_post['simpan'])) {
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+            <img src="assets/img/P.jfif" alt="Profile" class="rounded-circle">
+            
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
+          <li class="dropdown-header">
+              <h6>Rain Martani Amarrosuli</h6>
+              <span>Admin</span>
             </li>
             <li>
               <hr class="dropdown-divider">
             </li>
 
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-person"></i>
-                <span>My Profile</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-gear"></i>
-                <span>Account Settings</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                <i class="bi bi-question-circle"></i>
-                <span>Need Help?</span>
-              </a>
-            </li>
             <li>
               <hr class="dropdown-divider">
             </li>
