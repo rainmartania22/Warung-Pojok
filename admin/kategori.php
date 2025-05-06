@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Kategori Produk - WarungPojok.id Admin</title>
+  <title>Kategori Produk - WarungPojok Admin</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -46,14 +46,15 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.php" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="">
-        <span class="d-none d-lg-block">WarungPojok.id</span>
+        <span class="d-none d-lg-block">WarungPojok</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
     <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
-        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+      <form class="search-form d-flex align-items-center" method="POST" action="">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword" value="<?php
+        echo isset($_POST['query']) ? htmlspecialchars($_POST['query']) : ''; ?>">
         <button type="submit" title="Search"><i class="bi bi-search"></i></button>
       </form>
     </div><!-- End Search Bar -->
@@ -206,7 +207,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <a href="t_kategori.php" class="btn-primary mt-3">
+                    <a href="t_kategori.php" class="btn btn-primary mt-3">
                         <i class="bi bi-plus-lg"></i> Tambah Data
                     </a>
                 </div>
@@ -259,17 +260,12 @@
                                 <td><?php echo $hasil['nm_kategori']; ?>
                               </td>
 
-                                  <a href="e_kategori.php?id=<?php
-                                  echo $hasil['id_kategori']; ?>"
-                                  class="btn btn-warning">
-                                      <i class="bi bi-pencil-square"></i>                                    
+                                  <a href="e_kategori.php?id=<?php echo $hasil['id_kategori']; ?>" class="btn btn-warning">
+                                    <i class="bi bi-pencil-square"></i>                                    
                                   </a>
-                                  <a href="h_kategori.php?id=<?php
-                                  echo $hasil['id_kategori']; ?>"
-                                  class="btn btn-danger"
-                                  onclick="return confrim
-                                  ('Apakah Anda Yakin Ingin Menghapus Data?')">
-                                      <i class="bi bi-trash"></i>
+                                  <a href="h_kategori.php?id=<?php echo $hasil['id_kategori']; ?>" class="btn btn-danger"
+                                  onclick="return confrim('Apakah Anda Yakin Ingin Menghapus Data?')">
+                                    <i class="bi bi-trash"></i>
                                   </a>
                               </td>
                             </tr>
