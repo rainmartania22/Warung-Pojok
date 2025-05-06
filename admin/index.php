@@ -324,13 +324,9 @@
   <div class="card-body text-center py-4">
     <h4 class="mb-2">Selamat datang di Website Admin 
     <strong>WarungPojok!</strong></h4>
-    <p class="text-muted small mb-0">Kelola produk, transaksi, dan pelanggan dengan mudah.</p>
-  
-    </div>
-
+    <p class="text-muted small mb-0">Kelola produk, transaksi, dan pelanggan dengan mudah.</p>   
   </div>
 </div>
-
 </div><!-- End Customers Card -->
 
             <!-- Sales Card -->
