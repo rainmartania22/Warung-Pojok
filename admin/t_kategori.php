@@ -74,8 +74,60 @@ if (isset($_POST['simpan'])) {
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
-          
+    
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+      <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="assets/img/P.jfif" alt="Profile" class="rounded-circle">
+            
+          </a><!-- End Profile Iamge Icon -->
+
+      <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>Rain Martani Amarrosuli</h6>
+              <span>Admin</span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+             
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+             
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+             
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+
+  
+
   </header><!-- End Header -->
+  </header><!-- End Header -->
+
+  
 
  <!-- ======= Sidebar ======= -->
  <aside id="sidebar" class="sidebar">
@@ -84,17 +136,10 @@ if (isset($_POST['simpan'])) {
 
   <li class="nav-item">
     <a class="nav-link " href="index.php">
-      <i class="bi bi-grid"></i>
+      <i class="bi bi-house-door"></i>
       <span>Beranda</span>
     </a>
-  </li><!-- End Dashboard Nav -->
-
-  
-
-  
-
-  
-
+  </li><!-- End Dashboard Nav -->     
       
   <li class="nav-item">
     <a class="nav-link collapsed" href="kategori.php">
