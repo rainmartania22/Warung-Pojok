@@ -1,24 +1,3 @@
-<?php
-session_start(); // Memulai sesi
-include "koneksi.php"; // Menyertakan file koneksi database
-
-// Cek apakah sudah login
-if (!isset($_SESSION["login"])) {
-    header("Location: login.php"); // Arahkan ke halaman login jika belum login
-    exit; // Menghentikan script
-}
-
-// Cek apakah status tersedia dan pastikan user adalah admin
-if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
-    echo "<script>
-        alert('Akses ditolak! Halaman ini hanya untuk Admin.');
-        window.location.href='login.php'; // Arahkan ke halaman login
-    </script>";
-    exit; // Menghentikan script
-}
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -225,16 +204,14 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
                                     $query = isset($_GET['query']) ? mysqli_real_escape_string($koneksi, $_GET['query']) : '';
 
                                     // Tambahkan WHERE jika query tidak kosong
-                                    $sql_query = "SELECT tb_produk.*, tb_kategori.nm_kategori FROM tb_produk LEFT JOIN tb_kategori ON tb_produk.id_kategori = tb_kategori.id_kategori";
+                                    $sql_query = "SELECT tb_produk.*, tb_kategori.nm_kategori FROM tb_produk LEFT JOIN tb_kategori ON tb_produk.id_ktg = tb_kategori.id_kategori";
 
                                     if (!empty($query)) {
-                                    $sql_query .= " WHERE tb_produk.nm_produk LIKE '%$query%' OR tb_kategori.nm_kategori LIKE '%$query%' OR tb_produk.desk LIKE '%$query%'"; 
+                                        $sql_query .= " WHERE tb_produk.nm_produk LIKE '%$query%' OR tb_kategori.nm_kategori LIKE '%$query%' OR tb_produk.desk LIKE '%$query%'"; 
                                     }
-
-                                    $sql = mysqli_query($koneksi, $query);
-
-                                    if (mysqli_num_rows($sql) > 0) {
-                                    while ($hasil = mysqli_fetch_array($sql)) {
+                                        $sql = mysqli_query($koneksi, $sql_query);
+                                        if (mysqli_num_rows($sql) > 0) {
+                                            while ($hasil = mysqli_fetch_array($sql)) {
                                     ?>
                                       <tr>
                                          <td><?php echo $no++; ?></td>
