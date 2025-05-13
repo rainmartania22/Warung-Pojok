@@ -1,20 +1,20 @@
 <?php
-session_start();
-include "koneksi.php";
+session_start(); // Memulai sesi
+include "koneksi.php"; // Menyertakan file koneksi database
 
 // Cek apakah sudah login
 if (!isset($_SESSION["login"])) {
-    header("Location: login.php");
-    exit;
+    header("Location: login.php"); // Arahkan ke halaman login jika belum login
+    exit; // Menghentikan script
 }
 
 // Cek apakah status tersedia dan pastikan user adalah admin
 if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
     echo "<script>
-    alert('Akses ditolak! Halaman ini hanya untuk Admin.');
-    window.location.href='login.php';
-  </script>";
-    exit;
+        alert('Akses ditolak! Halaman ini hanya untuk Admin.');
+        window.location.href='login.php'; // Arahkan ke halaman login
+    </script>";
+    exit; // Menghentikan script
 }
 ?>
 
