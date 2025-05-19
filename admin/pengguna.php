@@ -1,11 +1,15 @@
+<?php
+include "koneksi.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-    <title>Pengguna - WarungPojok Admin</title>
+    <title>Pengguna- WarungPojok Admin</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -37,7 +41,7 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
-            <a href="index.php" class="logo d-flex align-items-center">
+            <a href="index.html" class="logo d-flex align-items-center">
                 <img src="assets/img/logo.png" alt="">
                 <span class="d-none d-lg-block">WarungPojok</span>
             </a>
@@ -65,6 +69,7 @@
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                         <img src="assets/img/P.jfif" alt="Profile" class="rounded-circle">
+                        <!-- profile-img.jpg diganti dengan foto kalian -->
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -98,7 +103,7 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="index.php">
-                    <i class="bi bi-house-door"></i>
+                     <i class="bi bi-house-door"></i>
                     <span>Beranda</span>
                 </a>
             </li><!-- End Beranda Nav -->
@@ -119,14 +124,14 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="keranjang.php">
-                    <i class="bi bi-cart4"></i>
+                     <i class="bi bi-cart4"></i>
                     <span>Keranjang</span>
                 </a>
             </li><!-- End Keranjang Page Nav -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="transaksi.php">
-                    <i class="bi bi-coin"></i>
+                     <i class="bi bi-coin"></i>
                     <span>Transaksi</span>
                 </a>
             </li><!-- End Transaksi Page Nav -->
@@ -139,7 +144,7 @@
             </li><!-- End Laporan Page Nav -->
             <li class="nav-item">
                 <a class="nav-link" href="pengguna.php">
-                    <i class="bi bi-person-fill"></i>
+                   <i class="bi bi-person-fill"></i>
                     <span>Pengguna</span>
                 </a>
             </li><!-- End Pengguna Page Nav -->
@@ -173,6 +178,7 @@
 
         <section class="section">
             <div class="row">
+
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
@@ -247,7 +253,7 @@
             &copy; Copyright <strong><span>WarungPojok</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-            Designed by <a href="https://www.instagram.com/yoikirain24_?igsh=ZG9jNjE0emRsY3lz/" target="_blank">Rain Martani Amarrosuli</a>
+            Designed by <a href="https://www.instagram.com/yoikirain24_?igsh=ZG9jNjE0emRsY3lz/" target="_blank">Rain Martani Amarrosuli</a></a>
         </div>
     </footer><!-- End Footer -->
 

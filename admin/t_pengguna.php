@@ -1,10 +1,42 @@
+<?php
+include "koneksi.php";
+if (isset($_POST['simpan'])) {
+    // Ambil ID terakhir dari tb_user
+    $auto = mysqli_query($koneksi, "SELECT MAX(id_user) AS max_code FROM tb_user");
+    $hasil = mysqli_fetch_array($auto);
+    $code = $hasil['max_code'];
+
+    // Menghasilkan ID baru dengan format U001, U002, dst.
+    $urutan = (int)substr($code, 1, 3);
+    $urutan++;
+    $huruf = "U";
+    $id_user = $huruf . sprintf("%03s", $urutan);
+
+    // Ambil input dari form
+    $username = $_POST['username'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash password
+    $status = $_POST['status'];
+
+    // Query untuk insert data ke tb_user
+    $query = mysqli_query($koneksi, "INSERT INTO tb_user (id_user, username, password, status) 
+                                     VALUES ('$id_user', '$username', '$password', '$status')");
+
+    // Notifikasi
+    if ($query) {
+        echo "<script>alert('Data pengguna berhasil ditambahkan!');</script>";
+        header("refresh:0, pengguna.php");
+    } else {
+        echo "<script>alert('Data pengguna gagal ditambahkan!');</script>";
+        header("refresh:0, pengguna.php");
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
     <title>Pengguna - WarungPojok Admin</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
@@ -50,6 +82,7 @@
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                         <img src="assets/img/P.jfif" alt="Profile" class="rounded-circle">
+                        <!-- profile-img.jpg diganti nama file gambar kalian -->
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -73,57 +106,59 @@
     </header><!-- End Header -->
 
     <!-- ======= Sidebar ======= -->
-    <aside id="sidebar" class="sidebar">
+     <aside id="sidebar" class="sidebar">
 
-        <ul class="sidebar-nav" id="sidebar-nav">
+    <ul class="sidebar-nav" id="sidebar-nav">
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="index.php">
-                    <i class="bi bi-house-door"></i>
-                    <span>Beranda</span>
-                </a>
-            </li><!-- End Beranda Nav -->
+      <li class="nav-item">
+        <a class="nav-link " href="index.php">
+        <i class="bi bi-house-door"></i>
+          <span>Beranda</span>
+        </a>
+      </li><!-- End Beranda Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="kategori.php">
-                    <i class="bi bi-tags"></i>
-                    <span>Kategori Produk</span>
-                </a>
-            </li><!-- End Kategori Produk Page Nav -->
+      
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="kategori.php">
+        <i class="bi bi-tags"></i>
+          <span>Kategori Produk</span>
+        </a>
+      </li><!-- End Kategori Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="produk.php">
-                    <i class="bi bi-basket"></i>
-                    <span>Produk</span>
-                </a>
-            </li><!-- End Produk Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="produk.php">
+          <i class="bi bi-basket"></i>
+          <span>Produk</span>
+        </a>
+      </li><!-- End Produk Page Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="keranjang.php">
-                    <i class="bi bi-cart4"></i>
-                    <span>Keranjang</span>
-                </a>
-            </li><!-- End Keranjang Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="keranjang.php">
+          <i class="bi bi-cart4"></i>
+          <span>Keranjang</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="transaksi.php">
-                    <i class="bi bi-coin"></i>
-                    <span>Transaksi</span>
-                </a>
-            </li><!-- End Transaksi Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="transaksi.php">
+          <i class="bi bi-coin"></i>
+          <span>Transaksi</span>
+        </a>
+      </li><!-- End Transaksi Page Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="laporan.php">
-                    <i class="bi bi-pencil-square"></i>
-                    <span>Laporan</span>
-                </a>
-            </li><!-- End Laporan Page Nav -->
-            <li class="nav-item">
-                <a class="nav-link" href="pengguna.php">
-                    <i class="bi bi-person-fill"></i>
-                    <span>Pengguna</span>
-                </a>
-            </li><!-- End Pengguna Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="laporan.php">
+          <i class="bi bi-pencil-square"></i>
+          <span>Laporan</span>
+        </a>
+      </li><!-- End laporan Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pengguna.php">
+          <i class="bi bi-person-fill"></i>
+          <span>Pengguna</span>
+        </a>
+      </li><!-- End Pengguna 404 Page Nav -->
         </ul>
 
     </aside><!-- End Sidebar-->
@@ -190,7 +225,7 @@
             &copy; Copyright <strong><span>WarungPojok</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-            Designed by <a href="https://www.instagram.com/yoikirain24_?igsh=ZG9jNjE0emRsY3lz/" target="_blank">Rain Martani Amarrosuli</a>
+            Designed by <a href="https://www.instagram.com/yoikirain24_?igsh=ZG9jNjE0emRsY3lz/" target="_blank">Rain Martani Amarrosuli</a></a>
         </div>
     </footer><!-- End Footer -->
 
