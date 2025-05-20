@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -18,6 +21,66 @@
     <link rel="stylesheet" href="assets/css/slick.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/main-color.css">
+<style>
+.login-button a {
+    font-weight: 600;
+    color: #347928;
+    border: 1px solid #347928;
+    transition: all 0.3s ease;
+}
+
+.login-button a:hover {
+    background-color: #347928;
+    color: #fff;
+    text-decoration: none;
+}
+
+.logout-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.logout-list li {
+    border-bottom: 1px solid #eee;
+}
+
+.logout-list li:last-child {
+    border-bottom: none;
+}
+
+.logout-list li a {
+    display: block;
+    padding: 10px 15px;
+}
+.logout-list li a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    transition: background 0.2s ease;
+}
+
+.logout-list li a:hover {
+    background-color: #f2f2f2;
+}
+
+.img-wrapper {
+    width: 370px;
+    height: 370px;
+    overflow: hidden;
+    border-radius: 10px;
+    /* opsional, biar lebih halus */
+}
+
+.square-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+</style>
 </head>
 <body class="biolife-body">
 
@@ -57,8 +120,7 @@
                             <ul class="menu biolife-menu clone-main-menu clone-primary-menu" id="primary-menu" data-menuname="main menu">
                                 
                                 <li class="menu-item menu-item-has-children has-megamenu">
-                                    <a href="#" class="menu-name" data-title="Shop" >Beranda</a>
-                                   
+                                    <a href="#" class="menu-name" data-title="Shop">Beranda</a>                                  
                                 </li>
                                 <li class="menu-item menu-item-has-children has-child">
                                     <a href="#" class="menu-name" data-title="Products">Belanja</a>                                    
@@ -165,22 +227,38 @@
                                     </form>
                                 </div>
                             </div>
-                           
+                           <?php if (isset($_SESSION['username'])) : ?>
+                                <?php
+                                include 'admin/koneksi.php';
+                                $user_id = $_SESSION['id_user'] ?? null;
+
+                                if ($user_id) {
+                                    $query = "SELECT COUNT(*) as total FROM tb_pesanan WHERE id_user = '$user_id'";
+                                    $result = mysqli_query($koneksi, $query);
+                                    $data = mysqli_fetch_assoc($result);
+                                    $jumlah_item = $data['total'] ?? 0;
+                                } else {
+                                    $jumlah_item = 0;
+                                }
+                            ?>
                             <div class="minicart-block">
                                 <div class="minicart-contain">
                                     <a href="javascript:void(0)" class="link-to">
                                             <span class="icon-qty-combine">
                                                 <i class="icon-cart-mini biolife-icon"></i>
-                                                <span class="qty">0</span>
+                                                <span class="qty"><?= $jumlah_item ?></span>
                                             </span>
-                                        <span class="title">Keranjang</span>
-                                        <span class="sub-total"></span>
+                                        <span class="title">Keranjang</span>                                       
                                     </a>
                                     <div class="cart-content">
                                         <div class="cart-inner">
                                             <ul class="products">
                                                 <li>
-                                                    <div class="minicart-item">
+                                                    <?php
+                                                    include 'admin/koneksi.php';
+                                                    $user_id = $_SESSION['id_user'] ?? null;
+                                                    
+                                                        <div class="minicart-item">
                                                         <div class="thumb">
                                                             <a href="#"><img src="assets/images/minicart/pr-01.jpg" width="90" height="90" alt="National Fresh"></a>
                                                         </div>
@@ -618,21 +696,19 @@
             <div class="row">
 
                 <!-- Main content -->
-                <div id="main-content" class="main-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                    <div class="block-item recently-products-cat md-margin-bottom-39">
-                        <ul class="products-list biolife-carousel nav-center-02 nav-none-on-mobile" data-slick='{"rows":1,"arrows":true,"dots":false,"infinite":false,"speed":400,"slidesMargin":0,"slidesToShow":5, "responsive":[{"breakpoint":1200, "settings":{ "slidesToShow": 3}},{"breakpoint":992, "settings":{ "slidesToShow": 3, "slidesMargin": 10}},{"breakpoint":768, "settings":{ "slidesToShow": 2, "slidesMargin":10 }}]}' >                                                  
-                        </ul>
-                    </div>
-
+                <div id="main-content" class="main-content col-lg-12 col-md-12 col-sm-12 col-xs-12">                 
                     <div class="product-category list-style">
-
-                        <div id="top-functions-area" class="top-functions-area" >
-                            <div class="flt-item to-left group-on-mobile">
-                              
-                                
+                       <div id="top-functions-area" class="top-functions-area" >
+                            <div class="flt-item to-left group-on-mobile">                                                              
                             </div>
-                            
+                         
+                            <?php 
+                            include 'admin/koneksi.php';
+
+                            // Tentukan jumlah produk per halaman
+                            $limit = 6;
+
+                            // Ambil
                         </div>
 
                         <div class="row">
@@ -877,7 +953,7 @@
                                 <i class="biolife-icon icon-head-phone"></i>
                                 <p class="r-info">
                                     <span>Ada Pertanyaan ?</span>
-                                    <span>083065177778</span>
+                                    <span>083865177778</span>
                                 </p>
                             </div>
                             
@@ -912,17 +988,14 @@
                                     <li>
                                         <p class="info-item">
                                             <i class="biolife-icon icon-clock"></i>
-                                            <b class="desc">Hours: 7 Days a week from 10:00 am</b>
+                                            <b class="desc">Jam Buka: Setiap hari, Mulai Pukul 08.00</b>
                                         </p>
                                     </li>
                                 </ul>
                             </div>
                             <div class="biolife-social inline">
                                 <ul class="socials">
-                                    <li><a href="#" title="twitter" class="socail-btn"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                    <li><a href="#" title="facebook" class="socail-btn"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                    <li><a href="#" title="pinterest" class="socail-btn"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                                    <li><a href="#" title="youtube" class="socail-btn"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                                    
                                     <li><a href="#" title="instagram" class="socail-btn"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                                 </ul>
                             </div>

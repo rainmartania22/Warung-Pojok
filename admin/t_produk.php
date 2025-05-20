@@ -8,34 +8,33 @@ $code = $hasil['max_code'];
 $urutan = (int)substr($code, 1, 3);
 $urutan++;
 $huruf = "P";
-$kode_produk = $huruf . sprintf("%03s", $urutan);
+$id_produk = $huruf . sprintf("%03s", $urutan);
 
 if (isset($_POST['simpan'])) {
     $nm_produk = $_POST['nm_produk'];
     $harga = $_POST['harga'];
     $stok = $_POST['stok'];
     $desk = $_POST['desk'];
-    $id_kategori = $_POST['id_kategori'];
+    $id_ktg = $_POST['id_ktg'];
 
-    // Upload Gambar
+    //upload gambar
     $imgfile = $_FILES['gambar']['name'];
-    $tmp_file = $_FILES['gambar']['tmp_name'];
+    $tmpfile = $_FILES['gambar']['tmp_name'];
     $extension = strtolower(pathinfo($imgfile, PATHINFO_EXTENSION));
 
     $dir = "produk_img/"; // Direktori penyimpanan gambar
     $allowed_extensions = array("jpg", "jpeg", "png", "webp");
-
+    
     if (!in_array($extension, $allowed_extensions)) {
-        echo "<script>alert('Format tidak valid. Hanya jpg, jpeg, png, dan webp yang diperbolehkan.');</script>";
+        echo "<script>alert('Format tidak valid. Hanya JPG, JPEG, PNG, dan WEBP yang diperbolehkan.');</script>";
     } else {
         // Rename file gambar agar unik
         $imgnewfile = md5(time() . $imgfile) . "." . $extension;
-        move_uploaded_file($tmp_file, $dir . $imgnewfile);
+        move_uploaded_file($tmpfile, $dir . $imgnewfile);
 
-        // Simpan data ke database
-        $query = mysqli_query($koneksi, "INSERT INTO tb_produk (id_produk, nm_produk, harga, stok, desk, id_kategori, gambar) 
-                                         VALUES ('$kode_produk', '$nm_produk', '$harga', '$stok', '$desk', '$id_kategori', '$imgnewfile')");
-
+        //Simpan data ke database
+        $query = mysqli_query($koneksi, "INSERT INTO tb_produk (id_produk, nm_produk, harga, stok, desk, id_ktg, gambar) VALUES ('$id_produk', '$nm_produk', '$harga', '$stok', '$desk', '$id_ktg', '$imgnewfile')");
+        
         if ($query) {
             echo "<script>alert('Produk berhasil ditambahkan!');</script>";
             header("refresh:0, produk.php");
@@ -46,8 +45,6 @@ if (isset($_POST['simpan'])) {
     }
 }
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -224,16 +221,16 @@ if (isset($_POST['simpan'])) {
                                     <textarea class="form-control" id="desk" name="desk" placeholder="Masukkan Deskripsi Produk" required></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <label for="id_kategori" class="form-label">Kategori</label>
-                                    <select class="form-control" id="id_kategori" name="id_kategori" required>
+                                    <label for="id_ktg" class="form-label">Kategori</label>
+                                    <select class="form-control" id="id_ktg" name="id_ktg" required>
                                         <option value="">-- Pilih Kategori --</option>
                                         <?php
                                         include "koneksi.php";
-                                        $query = mysqli_query($koneksi, "SELECT * FROM tb_ktg"); 
+                                        $query = mysqli_query($koneksi, "SELECT * FROM tb_kategori");
                                         while ($kategori = mysqli_fetch_array($query)) {
-                                            echo "<option value='{$kategori['id_kategori']}'>{$kategori['nm_kategori']}</option>";
+                                            echo "<option value='{$kategori['id_ktg']}'>$kategori[nm_kategori]</option>";
                                         }
-                                        ?>]
+                                        ?> 
                                     </select>
                                 </div>
                                 <div class="col-12">

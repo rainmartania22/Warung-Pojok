@@ -234,7 +234,7 @@
                     ['query']) : '';
 
                     // Query dasar
-                    $sql_query = "SELECT id_kategori, nm_kategori FROM
+                    $sql_query = "SELECT id_ktg, nm_kategori FROM
                     tb_kategori";
 
                     // Jika ada pencarian, tambahkan kondisi WHERE 
@@ -253,10 +253,10 @@
                                 <td><?php echo $hasil['nm_kategori']; ?>
                               </td>
 
-                                  <a href="e_kategori.php?id=<?php echo $hasil['id_kategori']; ?>" class="btn btn-warning">
+                                  <a href="e_kategori.php?id=<?php echo $hasil['id_ktg']; ?>" class="btn btn-warning">
                                     <i class="bi bi-pencil-square"></i>                                    
                                   </a>
-                                  <a href="h_kategori.php?id=<?php echo $hasil['id_kategori']; ?>" class="btn btn-danger"
+                                  <a href="h_kategori.php?id=<?php echo $hasil['id_ktg']; ?>" class="btn btn-danger"
                                   onclick="return confrim('Apakah Anda Yakin Ingin Menghapus Data?')">
                                     <i class="bi bi-trash"></i>
                                   </a>
