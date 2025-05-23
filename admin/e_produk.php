@@ -1,3 +1,77 @@
+<?php
+session_start();
+include "koneksi.php";
+
+// Cek apakah sudah login
+if (!isset($_SESSION["login"])) {
+    header("Location: login.php");
+    exit;
+}
+
+// Cek apakah status tersedia dan pastikan user adalah admin
+if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
+    echo "<script>
+    alert('Akses ditolak! Halaman ini hanya untuk Admin.');
+    window.location.href='login.php';
+  </script>";
+    exit;
+}
+// Pastikan ada ID produk yang dikirimkan
+if (isset($_GET['id'])) {
+    $id_produk = $_GET['id'];
+
+    // Ambil data produk berdasarkan ID
+    $query = mysqli_query($koneksi, "SELECT * FROM tb_produk WHERE id_produk = '$id_produk'");
+    $data = mysqli_fetch_array($query);
+}
+
+// Jika tombol update ditekan
+if (isset($_POST['update'])) {
+    $nm_produk = $_POST['nm_produk'];
+    $harga = $_POST['harga'];
+    $stok = $_POST['stok'];
+    $desk = $_POST['desk'];
+    $id_ktg = $_POST['id_ktg'];
+    $gambar_lama = $_POST['gambar_lama'];
+
+    // Cek apakah ada gambar baru yang diupload
+    if ($_FILES['gambar']['name'] != "") {
+        $imgfile = $_FILES['gambar']['name'];
+        $tmp_file = $_FILES['gambar']['tmp_name'];
+        $extension = strtolower(pathinfo($imgfile, PATHINFO_EXTENSION));
+        $dir = "produk_img/";
+        $allowed_extensions = array("jpg", "jpeg", "png", "webp");
+
+        if (!in_array($extension, $allowed_extensions)) {
+            echo "<script>alert('Format tidak valid. Hanya jpg, jpeg, png, dan webp yang diperbolehkan.');</script>";
+        } else {
+            // Hapus gambar lama jika ada
+            if (file_exists($dir . $gambar_lama) && $gambar_lama != "") {
+                unlink($dir . $gambar_lama);
+            }
+
+            // Simpan gambar baru dengan nama unik
+            $imgnewfile = md5(time() . $imgfile) . "." . $extension;
+            move_uploaded_file($tmp_file, $dir . $imgnewfile);
+        }
+    } else {
+        $imgnewfile = $gambar_lama; // Jika tidak ada gambar baru, gunakan gambar lama
+    }
+
+    // Update data ke database
+    $query = mysqli_query($koneksi, "UPDATE tb_produk SET nm_produk='$nm_produk', harga='$harga', stok='$stok', 
+    desk='$desk', id_ktg='$id_ktg', gambar='$imgnewfile' WHERE id_produk='$id_produk'");
+
+    if ($query) {
+        echo "<script>alert('Produk berhasil diperbarui!');</script>";
+        header("refresh:0, produk.php");
+    } else {
+        echo "<script>alert('Gagal memperbarui produk!');</script>";
+        header("refresh:0, produk.php");
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -157,35 +231,47 @@
 
                             <!-- Vertical Form -->
                             <form class="row g-3 mt-2" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="gambar_lama" value="<?php echo $data['gambar']; ?>">
                                 <div class="col-12">
                                     <label for="nm_produk" class="form-label">Nama Produk</label>
-                                    <input type="text" class="form-control" id="nm_produk" name="nm_produk" placeholder="Masukkan Nama Produk" required>
+                                    <input type="text" class="form-control" id="nm_produk" name="nm_produk" placeholder="Masukkan Nama Produk" value="<?php echo $data['nm_produk']; ?>" required>
                                 </div>
                                 <div class="col-12">
                                     <label for="harga" class="form-label">Harga</label>
-                                    <input type="number" class="form-control" id="harga" name="harga" placeholder="Masukkan Harga Produk" required>
+                                    <input type="number" class="form-control" id="harga" name="harga" placeholder="Masukkan Harga Produk" value="<?php echo $data['harga']; ?>"
+                                required>
                                 </div>
                                 <div class="col-12">
                                     <label for="stok" class="form-label">Stok</label>
-                                    <input type="number" class="form-control" id="stok" name="stok" placeholder="Masukkan Stok Produk" required>
+                                    <input type="number" class="form-control" id="stok" name="stok" placeholder="Masukkan Stok Produk" value="<?php echo $data['stok']; ?>" required>
                                 </div>
                                 <div class="col-12">
                                     <label for="desk" class="form-label">Deskripsi</label>
-                                    <textarea class="form-control" id="desk" name="desk" placeholder="Masukkan Deskripsi Produk" required></textarea>
+                                    <textarea class="form-control" id="desk" name="desk" placeholder="Masukkan Deskripsi Produk" required><?php echo $data['desk']; ?></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <label for="id_kategori" class="form-label">Kategori</label>
-                                    <select class="form-control" id="id_kategori" name="id_kategori" required>
+                                    <label for="id_ktg" class="form-label">Kategori</label>
+                                    <select class="form-control" id="id_ktg" name="id_ktg" required>
                                         <option value="">-- Pilih Kategori --</option>
+                                        <?php
+                                        $query_kategori = mysqli_query($koneksi, "SELECT * FROM tb_kategori");
+                                        while ($kategori = mysqli_fetch_array($query_kategori)) {
+                                            $selected = ($kategori['id_ktg'] == $data['id_ktg']) ? 'selected' : '';
+                                            echo "<option value='" . $kategori['id_ktg'] . "' $selected>" . $kategori['nm_kategori'] . "</option>";
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="col-12">
                                     <label for="gambar" class="form-label">Gambar Produk</label>
                                     <input type="file" class="form-control" id="gambar" name="gambar" accept="image/*">
+                                    <?php if ($data['gambar']) { ?>
+                                        <img src="produk_img/<?php echo $data['gambar']; ?>" height="100">
+                                    <?php } ?>
                                 </div>
                                 <div class="text-center">
                                     <button type="reset" class="btn btn-secondary">Reset</button>
-                                    <button type="submit" class="btn btn-primary" name="simpan">Simpan</button>
+                                    <button type="submit" class="btn btn-primary" name="update">Simpan</button>
                                 </div>
                             </form>
 
