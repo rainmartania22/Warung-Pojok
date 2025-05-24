@@ -57,40 +57,26 @@
                     <div class="col-lg-3 col-md-3 col-6 d-flex justify-content-end align-items-center">
                         <div class="biolife-cart-info">
                             <div class="mobile-search">
-                                <a href="javascript:void(0)" class="open-searchbox"><i
-                                        class="biolife-icon icon-search"></i></a>
-                                <div class="mobile-search-content">
-                                    <form action="#" class="form-search" name="mobile-seacrh" method="get">
-                                        <a href="#" class="btn-close"><span
-                                                class="biolife-icon icon-close-menu"></span></a>
-                                        <input type="text" name="s" class="input-text" value=""
-                                            placeholder="Search here...">
-                                        <select name="category">
-                                            <option value="-1" selected>All Categories</option>
-                                            <option value="vegetables">Vegetables</option>
-                                            <option value="fresh_berries">Fresh Berries</option>
-                                            <option value="ocean_foods">Ocean Foods</option>
-                                            <option value="butter_eggs">Butter & Eggs</option>
-                                            <option value="fastfood">Fastfood</option>
-                                            <option value="fresh_meat">Fresh Meat</option>
-                                            <option value="fresh_onion">Fresh Onion</option>
-                                            <option value="papaya_crisps">Papaya & Crisps</option>
-                                            <option value="oatmeal">Oatmeal</option>
-                                        </select>
-                                        <button type="submit" class="btn-submit">go</button>
-                                    </form>
-                                </div>
                             </div>
-                            <div class="wishlist-block hidden-sm hidden-xs">
-                                <a href="#" class="link-to">                                  
-                                </a>
-                            </div>
+                            <?php
+                            include 'admin/koneksi.php';
+                            $user_id = $_SESSION['id_user'] ?? null;
+                            
+                            if ($user_id) {
+                                $query = "SELECT COUNT(*) as total FROM tb_pesanan WHERE id_user = '$user_id'";
+                                $result = mysqli_query($koneksi, $query);
+                                $data = mysqli_fetch_assoc($result);
+                                $jumlah_item = $data['total'] ?? 0;               
+                            } else {
+                                $jumlah_item = 0;
+                            }
+                            ?>                               
                             <div class="minicart-block">
                                 <div class="minicart-contain">
                                     <a href="javascript:void(0)" class="link-to">
                                             <span class="icon-qty-combine">
                                                 <i class="icon-cart-mini biolife-icon"></i>
-                                                <span class="qty">0</span>
+                                                <span class="qty"><?= $jumlah_item ?></span>
                                             </span>
                                         <span class="title">Keranjang</span>
                                         <span class="sub-total">Rp.0</span>
@@ -98,6 +84,7 @@
                                     <div class="cart-content">
                                         <div class="cart-inner">
                                             <ul class="products">
+                                                
                                                 <li>
                                                     <div class="minicart-item">
                                                         <div class="thumb">
@@ -618,9 +605,8 @@
                 <div class="product-tabs single-layout biolife-tab-contain">
                     <div class="tab-head">
                         <ul class="tabs">
-                            <li class="tab-element active"><a href="#tab_1st" class="tab-link">DESKRIPSI</a></li>
-                            <li class="tab-element" ><a href="#tab_2nd" class="tab-link">STOK</a></li>
-                            
+                            <li class="tab-element active"><a href="#tab_1st" class="tab-link">Deskripsi</a></li>
+                            <li class="tab-element" ><a href="#tab_2nd" class="tab-link">Stok</a></li>                           
                         </ul>
                     </div>
                     <div class="tab-content">
@@ -868,7 +854,7 @@
                         <h3 class="main-title">Produk Terkait</h3>
                     </div>
                     <ul class="products-list biolife-carousel nav-center-02 nav-none-on-mobile" data-slick='{"rows":1,"arrows":true,"dots":false,"infinite":false,"speed":400,"slidesMargin":0,"slidesToShow":5, "responsive":[{"breakpoint":1200, "settings":{ "slidesToShow": 4}},{"breakpoint":992, "settings":{ "slidesToShow": 3, "slidesMargin":20 }},{"breakpoint":768, "settings":{ "slidesToShow": 2, "slidesMargin":10}}]}'>
-
+                    
                         <li class="product-item">
                             <div class="contain-product layout-default">
                                 <div class="product-thumb">
