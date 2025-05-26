@@ -37,8 +37,7 @@ foreach ($pesanan_data as $pesanan) {
     $row_stok = mysqli_fetch_assoc($result_stok);
 
     if (!$row_stok || $row_stok['stok'] < $qty) {
-        echo json_encode(["success"=> false, "message" => "Stok tidak cukup untuk produk ID:
-        $id_produk"]);
+        echo json_encode(["success" => false, "message" => "Stok tidak cukup untuk produk ID: $id_produk"]);
         exit;
     }
 }
@@ -59,21 +58,21 @@ $row_id = mysqli_fetch_assoc($result_id);
 $last_id = $row_id['last_id'];
 
 if ($last_id) {
-    $new_id = 'T' . str_pad((intval(substr($last_id, 1)) + 1), 3, '0', STR_PAD_LEFT); 
+    $new_id = 'T' . str_pad((intval(substr($last_id, 1)) + 1), 3, '0', STR_PAD_LEFT);
 } else {
     $new_id = 'T001';
-    exit;
 }
 
-// insert ke tb_jual
-$query_jual = "INSERT INTO tb_jual (id_jual, id_user, tgl_jual, total, diskon) VALUES ('$new_id', '$id_user', '$tgl_jual', '$total_bayar', '$diskon')";
+// Insert ke tb_jual
+$query_jual = "INSERT INTO tb_jual (id_jual, id_user, tgl_jual, total, diskon)
+               VALUES ('$new_id', '$id_user', '$tgl_jual', '$total_bayar', '$diskon')";
 if (!mysqli_query($koneksi, $query_jual)) {
     echo json_encode(["success" => false, "message" => "Gagal menyimpan ke tb_jual: " . mysqli_error($koneksi)]);
     exit;
 }
 
-// Insert ke tb-jualdtl
-$values =[];
+// Insert ke tb_jualdtl
+$values = [];
 foreach ($pesanan_data as $pesanan) {
     $id_produk = mysqli_real_escape_string($koneksi, $pesanan['id_produk']);
     $qty = intval($pesanan['qty']);
@@ -82,8 +81,7 @@ foreach ($pesanan_data as $pesanan) {
     $values[] = "('$new_id', '$id_produk', '$qty', '$harga')";
 }
 if (!empty($values)) {
-    $query_jualdtl = "INSERT INTO tb_jualdtl (id_jual, id_produk, qty, harga) VALUES " . implode(",
-    ", $values);
+    $query_jualdtl = "INSERT INTO tb_jualdtl (id_jual, id_produk, qty, harga) VALUES " . implode(", ", $values);
     if (!mysqli_query($koneksi, $query_jualdtl)) {
         echo json_encode(["success" => false, "message" => "Gagal insert ke tb_jualdtl: " . mysqli_error($koneksi)]);
         exit;
@@ -97,8 +95,7 @@ foreach ($pesanan_data as $pesanan) {
 
     $query_update_stok = "UPDATE tb_produk SET stok = stok - $qty WHERE id_produk = '$id_produk'";
     if (!mysqli_query($koneksi, $query_update_stok)) {
-        echo json_encode(["success" => false, "message" => "Gagal update stok produk: " .
-        mysqli_error($koneksi)]);
+        echo json_encode(["success" => false, "message" => "Gagal update stok produk: " . mysqli_error($koneksi)]);
         exit;
     }
 }
@@ -110,5 +107,5 @@ if (!mysqli_query($koneksi, $query_hapus)) {
     exit;
 }
 
-echo json_encode(["success" => true, "message" => "Checkout berhasil", "id_jual" => $new_id]);
+echo json_encode(["success" => true, "message" => "Checkout berhasil!", "id_jual" => $new_id]);
 ?>

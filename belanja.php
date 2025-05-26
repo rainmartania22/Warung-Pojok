@@ -59,7 +59,7 @@ session_start()
         }
 
         .logout-list li a:hover {
-            background-color: #f2f2f2;
+            background-color:rgb(61, 4, 4);
         }
 
         .img-wrapper {
@@ -307,7 +307,7 @@ session_start()
                         <div class="live-info">
                             <p class="telephone"><i class="fa fa-phone" aria-hidden="true"></i><b
                                     class="phone-number">083865177778</b></p>
-                            <p class="working-time">Sen-Jum: 8.30am-7.30pm; Sab-Min: 9.30-4.30pm</p>
+                            <p class="working-time">Sen-Jum: 8.30am-7.30pm; Sab-Min: 9.30am-4.30pm</p>
                         </div>
                     </div>
                 </div>

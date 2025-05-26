@@ -207,16 +207,8 @@ $data = mysqli_fetch_array($sql);
                                 </ul>
                             </div>
                             <div class="biolife-social inline">
-                                <ul class="socials">
-                                    <li><a href="#" title="twitter" class="socail-btn"><i class="fa fa-twitter"
-                                                aria-hidden="true"></i></a></li>
-                                    <li><a href="#" title="facebook" class="socail-btn"><i class="fa fa-facebook"
-                                                aria-hidden="true"></i></a></li>
-                                    <li><a href="#" title="pinterest" class="socail-btn"><i class="fa fa-pinterest"
-                                                aria-hidden="true"></i></a></li>
-                                    <li><a href="#" title="youtube" class="socail-btn"><i class="fa fa-youtube"
-                                                aria-hidden="true"></i></a></li>
-                                    <li><a href="https://instagram.com/fatkyuun/" title="instagram"
+                                <ul class="socials">                                   
+                                    <li><a href="https://www.instagram.com/yoikirain24_?igsh=ZG9jNjE0emRsY3lz/"  title="instagram"
                                             class="socail-btn"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                                     </li>
                                 </ul>

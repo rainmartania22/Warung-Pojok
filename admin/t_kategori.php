@@ -1,5 +1,6 @@
 <?php
 include "koneksi.php";
+
 if (isset($_POST['simpan'])) {
   $auto = mysqli_query($koneksi, "select max(id_ktg) as max_code from tb_kategori");
   $hasil = mysqli_fetch_array($auto);
