@@ -285,8 +285,13 @@ session_start()
                                     include "admin/koneksi.php";
                                     $kategori_result = mysqli_query($koneksi, "SELECT * FROM tb_kategori ORDER BY nm_kategori ASC");
                                     while ($kategori = mysqli_fetch_assoc($kategori_result)) {
+<<<<<<< HEAD
                                         $selected = (isset($_GET['kategori']) && $_GET['kategori'] == $kategori['id_kategori']) ? 'style="font-weight:bold;"' : '';
                                         echo '<li class="menu-item"><a href="?kategori=' . $kategori['id_kategori'] . '" class="menu-title" ' . $selected . '>' . $kategori['nm_kategori'] . '</a></li>';
+=======
+                                        $selected = (isset($_GET['kategori']) && $_GET['kategori'] == $kategori['id_kategori']) ? 'style="font-weight:bold;"' : '';
+                                        echo '<li class="menu-item"><a href="?kategori=' . $kategori['id_kategori'] . '" class="menu-title" ' . $selected . '>' . $kategori['nm_kategori'] . '</a></li>';
+>>>>>>> 6aa24a0d93906641014d5809102ff9bebc1ca676
                                     }
                                     ?>
                                 </ul>
@@ -362,7 +367,11 @@ session_start()
                             $where[] = "(p.nm_produk LIKE '%$search%' OR p.desk LIKE '%$search%')";
                         }
                         if (!empty($kategori)) {
+<<<<<<< HEAD
                             $where[] = "p.id_kategori = '$kategori'";
+=======
+                            $where[] = "p.id_kategori = '$kategori'";
+>>>>>>> 6aa24a0d93906641014d5809102ff9bebc1ca676
                         }
                         $where_sql = !empty($where) ? 'WHERE ' . implode(' AND ', $where) : '';
 
@@ -375,7 +384,11 @@ session_start()
 
                         // Query ambil data produk
                         $query = "SELECT p.*, k.nm_kategori FROM tb_produk p 
+<<<<<<< HEAD
             JOIN tb_kategori k ON p.id_kategori = k.id_kategori 
+=======
+            JOIN tb_kategori k ON p.id_kategori = k.id_kategori 
+>>>>>>> 6aa24a0d93906641014d5809102ff9bebc1ca676
             $where_sql 
             ORDER BY p.id_produk ASC 
             LIMIT $start, $limit";

@@ -234,7 +234,11 @@
                     ['query']) : '';
 
                     // Query dasar
+<<<<<<< HEAD
                     $sql_query = "SELECT id_kategori, nm_kategori FROM
+=======
+                    $sql_query = "SELECT id_kategori, nm_kategori FROM
+>>>>>>> 6aa24a0d93906641014d5809102ff9bebc1ca676
                     tb_kategori";
 
                     // Jika ada pencarian, tambahkan kondisi WHERE 
@@ -253,10 +257,17 @@
                                 <td><?php echo $hasil['nm_kategori']; ?>
                               </td>
                               <td>
+<<<<<<< HEAD
                                   <a href="e_kategori.php?id=<?php echo $hasil['id_kategori']; ?>" class="btn btn-warning">
                                     <i class="bi bi-pencil-square"></i>                                    
                                   </a>
                                   <a href="h_kategori.php?id=<?php echo $hasil['id_kategori']; ?>" class="btn btn-danger"
+=======
+                                  <a href="e_kategori.php?id=<?php echo $hasil['id_kategori']; ?>" class="btn btn-warning">
+                                    <i class="bi bi-pencil-square"></i>                                    
+                                  </a>
+                                  <a href="h_kategori.php?id=<?php echo $hasil['id_kategori']; ?>" class="btn btn-danger"
+>>>>>>> 6aa24a0d93906641014d5809102ff9bebc1ca676
                                   onclick="return confrim('Apakah Anda Yakin Ingin Menghapus Data?')">
                                     <i class="bi bi-trash"></i>
                                   </a>
