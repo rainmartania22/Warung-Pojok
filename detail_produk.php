@@ -6,32 +6,20 @@ include 'admin/koneksi.php';
 $id_produk = isset($_GET['id']) ? mysqli_real_escape_string($koneksi, $_GET['id']) : '';
 
 $query = "SELECT p.nm_produk, p.harga, p.stok, p.desk, p.gambar, k.nm_kategori 
-<<<<<<< HEAD
-          FROM tb_produk p
-          JOIN tb_kategori k ON p.id_kategori = k.id_kategori
-          WHERE p.id_produk = '$id_produk'";
-=======
         FROM tb_produk p
-        JOIN tb_kategori k ON p.id_ktg = k.id_ktg
+        JOIN tb_kategori k ON p.id_kategori = k.id_kategori
         WHERE p.id_produk = '$id_produk'";
->>>>>>> 6aa24a0d93906641014d5809102ff9bebc1ca676
 
 $result = $koneksi->query($query);
 $produk = $result->fetch_assoc();
 
 // Query untuk produk lain selain produk yang sedang dibuka
-<<<<<<< HEAD
-$query_lainnya = "SELECT id_produk, nm_produk, desk, harga, gambar, (SELECT nm_kategori FROM tb_kategori WHERE tb_kategori.id_kategori = p.id_kategori) as kategori 
-                  FROM tb_produk p
-                  WHERE id_produk != '$id_produk'
-                  ORDER BY RAND()
-=======
+
 $query_lainnya = "SELECT id_produk, nm_produk, desk, harga, gambar, (SELECT nm_kategori FROM tb_kategori WHERE tb_kategori.id_kategori = p.id_kategori) as kategori 
                 FROM tb_produk p
                 WHERE id_produk != '$id_produk'
                 ORDER BY RAND()
->>>>>>> 6aa24a0d93906641014d5809102ff9bebc1ca676
-                  LIMIT 6"; // batasi sesuai kebutuhan
+                LIMIT 6"; // batasi sesuai kebutuhan
 
 $result_lainnya = $koneksi->query($query_lainnya);
 
@@ -64,11 +52,8 @@ if (isset($_POST['add_to_cart'])) {
 
             // Simpan ke database
             $query_insert = "INSERT INTO tb_pesanan (id_pesanan, id_produk, qty, total, id_user) 
-<<<<<<< HEAD
-                             VALUES ('$new_id', '$id_produk', '$qty', '$total', '$id_user')";
-=======
-                            VALUES ('$new_id', '$id_produk', '$qty', '$total', '$id_user')";
->>>>>>> 6aa24a0d93906641014d5809102ff9bebc1ca676
+                           VALUES ('$new_id', '$id_produk', '$qty', '$total', '$id_user')";
+
 
             if ($koneksi->query($query_insert) === TRUE) {
                 echo "<script>alert('Produk berhasil ditambahkan ke keranjang!'); window.location.href='belanja.php';</script>";

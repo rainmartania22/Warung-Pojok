@@ -2,11 +2,7 @@
 include "koneksi.php";
 
 if (isset($_POST['simpan'])) {
-<<<<<<< HEAD
   $auto = mysqli_query($koneksi, "select max(id_kategori) as max_code from tb_kategori");
-=======
-  $auto = mysqli_query($koneksi, "select max(id_kategori) as max_code from tb_kategori");
->>>>>>> 6aa24a0d93906641014d5809102ff9bebc1ca676
   $hasil = mysqli_fetch_array($auto);
   $code = $hasil['max_code'];
   $urutan = (int)substr($code, 1, 3);
@@ -14,12 +10,8 @@ if (isset($_POST['simpan'])) {
   $huruf = "K";
   $id_kategori = $huruf . sprintf("%03s", $urutan);
   $nm_kategori = $_POST['nm_kategori'];
+  $query = mysqli_query($koneksi, "INSERT INTO tb_kategori(id_kategori, nm_kategori) VALUES ('$id_kategori', '$nm_kategori')");
 
-<<<<<<< HEAD
-  $query = mysqli_query($koneksi, "INSERT INTO tb_kategori(id_kategori, nm_kategori) VALUES ('$id_kategori', '$nm_kategori')");
-=======
-  $query = mysqli_query($koneksi, "INSERT INTO tb_kategori(id_kategori, nm_kategori) VALUES ('$id_kategori', '$nm_kategori')");
->>>>>>> 6aa24a0d93906641014d5809102ff9bebc1ca676
   if ($query) {
     echo "<script>alert('Data berhasil ditambahkan!')</script>";
     header("refresh:0, kategori.php");

@@ -31,11 +31,7 @@ if (isset($_POST['update'])) {
     $harga = $_POST['harga'];
     $stok = $_POST['stok'];
     $desk = $_POST['desk'];
-<<<<<<< HEAD
     $id_kategori = $_POST['id_kategori'];
-=======
-    $id_ktg = $_POST['id_kategori'];
->>>>>>> 6aa24a0d93906641014d5809102ff9bebc1ca676
     $gambar_lama = $_POST['gambar_lama'];
 
     // Cek apakah ada gambar baru yang diupload
@@ -64,11 +60,7 @@ if (isset($_POST['update'])) {
 
     // Update data ke database
     $query = mysqli_query($koneksi, "UPDATE tb_produk SET nm_produk='$nm_produk', harga='$harga', stok='$stok', 
-<<<<<<< HEAD
     desk='$desk', id_kategori='$id_kategori', gambar='$imgnewfile' WHERE id_produk='$id_produk'");
-=======
-    desk='$desk', id_kategori='$id_kategori', gambar='$imgnewfile' WHERE id_produk='$id_produk'");
->>>>>>> 6aa24a0d93906641014d5809102ff9bebc1ca676
 
     if ($query) {
         echo "<script>alert('Produk berhasil diperbarui!');</script>";
@@ -258,24 +250,15 @@ if (isset($_POST['update'])) {
                                     <textarea class="form-control" id="desk" name="desk" placeholder="Masukkan Deskripsi Produk" required><?php echo $data['desk']; ?></textarea>
                                 </div>
                                 <div class="col-12">
-<<<<<<< HEAD
                                     <label for="id_kategori" class="form-label">Kategori</label>
                                     <select class="form-control" id="id_kategori" name="id_kategori" required>
-=======
-                                    <label for="id_kategori" class="form-label">Kategori</label>
-                                    <select class="form-control" id="id_kategori" name="id_kategori" required>
->>>>>>> 6aa24a0d93906641014d5809102ff9bebc1ca676
                                         <option value="">-- Pilih Kategori --</option>
                                         <?php
                                         $query_kategori = mysqli_query($koneksi, "SELECT * FROM tb_kategori");
                                         while ($kategori = mysqli_fetch_array($query_kategori)) {
-<<<<<<< HEAD
                                             $selected = ($kategori['id_kategori'] == $data['id_kategori']) ? 'selected' : '';
                                             echo "<option value='" . $kategori['id_kategori'] . "' $selected>" . $kategori['nm_kategori'] . "</option>";
-=======
-                                            $selected = ($kategori['id_kategori'] == $data['id_kategori']) ? 'selected' : '';
-                                            echo "<option value='" . $kategori['id_kategori'] . "' $selected>" . $kategori['nm_kategori'] . "</option>";
->>>>>>> 6aa24a0d93906641014d5809102ff9bebc1ca676
+
                                         }
                                         ?>
                                     </select>

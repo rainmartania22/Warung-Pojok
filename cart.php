@@ -7,22 +7,15 @@ $id_produk = isset($_GET['id']) ? mysqli_real_escape_string($koneksi, $_GET['id'
 
 $query = "SELECT p.nm_produk, p.harga, p.stok, p.desk, p.gambar, k.nm_kategori 
         FROM tb_produk p
-<<<<<<< HEAD
+
         JOIN tb_kategori k ON p.id_kategori = k.id_kategori
-=======
-        JOIN tb_kategori k ON p.id_kategori = k.id_kategori
->>>>>>> 6aa24a0d93906641014d5809102ff9bebc1ca676
         WHERE p.id_produk = '$id_produk'";
 
 $result = $koneksi->query($query);
 $produk = $result->fetch_assoc();
 
 // Query untuk produk lain selain produk yang sedang dibuka
-<<<<<<< HEAD
 $query_lainnya = "SELECT id_produk, nm_produk, desk, harga, gambar, (SELECT nm_kategori FROM tb_kategori WHERE tb_kategori.id_kategori = p.id_kategori) as kategori 
-=======
-$query_lainnya = "SELECT id_produk, nm_produk, desk, harga, gambar, (SELECT nm_kategori FROM tb_kategori WHERE tb_kategori.id_ktg = p.id_ktg) as kategori 
->>>>>>> 6aa24a0d93906641014d5809102ff9bebc1ca676
                 FROM tb_produk p
                 WHERE id_produk != '$id_produk'
                 ORDER BY RAND()
@@ -617,11 +610,7 @@ if (isset($_POST['add_to_cart'])) {
                                             <li>
                                                 <p class="info-item">
                                                     <i class="biolife-icon icon-phone"></i>
-<<<<<<< HEAD
                                                     <b class="desc">Telepon: 0838-6517-7778</b>
-=======
-                                                    <b class="desc">Telepon: 0838-6517-7778</b>
->>>>>>> 6aa24a0d93906641014d5809102ff9bebc1ca676
                                                 </p>
                                             </li>
                                             <li>

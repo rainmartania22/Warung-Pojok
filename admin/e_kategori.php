@@ -3,21 +3,12 @@
  
  
  $id  = $_GET['id'];
-<<<<<<< HEAD
  $sql = mysqli_query($koneksi, "SELECT * FROM tb_kategori WHERE id_kategori = '$id'");
-=======
- $sql = mysqli_query($koneksi, "SELECT * FROM tb_kategori WHERE id_kategori = '$id'");
->>>>>>> 6aa24a0d93906641014d5809102ff9bebc1ca676
  $data = mysqli_fetch_array($sql);
  
  if (isset($_POST['simpan'])) {
      $nm_kategori = $_POST['nm_kategori'];
- 
-<<<<<<< HEAD
      $query = mysqli_query($koneksi, "UPDATE tb_kategori SET nm_kategori = '$nm_kategori' WHERE id_kategori = '$id'");
-=======
-     $query = mysqli_query($koneksi, "UPDATE tb_kategori SET nm_kategori = '$nm_kategori' WHERE id_kategori = '$id'");
->>>>>>> 6aa24a0d93906641014d5809102ff9bebc1ca676
  
      if ($query) {
          echo "<script>alert('Data Berhasil Diubah!');</script>";

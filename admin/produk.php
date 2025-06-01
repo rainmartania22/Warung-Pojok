@@ -224,11 +224,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
                                     $query = isset($_GET['query']) ? mysqli_real_escape_string($koneksi, $_GET['query']) : '';
 
                                     // Tambahkan WHERE jika query tidak kosong
-<<<<<<< HEAD
                                     $sql_query = "SELECT tb_produk.*, tb_kategori.nm_kategori FROM tb_produk LEFT JOIN tb_kategori ON tb_produk.id_kategori = tb_kategori.id_kategori";
-=======
-                                    $sql_query = "SELECT tb_produk.*, tb_kategori.nm_kategori FROM tb_produk LEFT JOIN tb_kategori ON tb_produk.id_ktg = tb_kategori.id_kategori";
->>>>>>> 6aa24a0d93906641014d5809102ff9bebc1ca676
 
                                     if (!empty($query)) {
                                         $sql_query .= " WHERE tb_produk.nm_produk LIKE '%$query%' OR tb_kategori.nm_kategori LIKE '%$query%' OR tb_produk.desk LIKE '%$query%'"; 
