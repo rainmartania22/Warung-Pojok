@@ -15,7 +15,7 @@ if (isset($_POST['simpan'])) {
     $harga = $_POST['harga'];
     $stok = $_POST['stok'];
     $desk = $_POST['desk'];
-    $id_ktg = $_POST['id_kategori'];
+    $id_kategori = $_POST['id_kategori'];
 
     //upload gambar
     $imgfile = $_FILES['gambar']['name'];
@@ -222,14 +222,14 @@ if (isset($_POST['simpan'])) {
                                     <textarea class="form-control" id="desk" name="desk" placeholder="Masukkan Deskripsi Produk" required></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <label for="id_ktg" class="form-label">Kategori</label>
-                                    <select class="form-control" id="id_ktg" name="id_ktg" required>
+                                    <label for="id_kategori" class="form-label">Kategori</label>
+                                    <select class="form-control" id="id_kategori" name="id_kategori" required>
                                         <option value="">-- Pilih Kategori --</option>
                                         <?php
                                         include "koneksi.php";
                                         $query = mysqli_query($koneksi, "SELECT * FROM tb_kategori");
                                         while ($kategori = mysqli_fetch_array($query)) {
-                                            echo "<option value='{$kategori['id_ktg']}'>$kategori[nm_kategori]</option>";
+                                            echo "<option value='{$kategori['id_kategori']}'>$kategori[nm_kategori]</option>";
                                         }
                                         ?> 
                                     </select>
