@@ -264,7 +264,7 @@ session_start();
                                 <li>
                                     <div class="if-item">
                                         <b class="tie">Alamat:</b>
-                                        <p class="desc">Cepu, Blora, Jawa Tengah, Indonesia</p>
+                                        <p class="dsc">Cepu, Blora, Jawa Tengah, Indonesia</p>
                                     </div>
                                 </li>
                                 <li>
@@ -324,7 +324,7 @@ session_start();
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-9">
                         <section class="footer-item">
-                            <a href="index.php" class="biolife-logo"><img src="assets/images/favicon.png" alt="biolife logo"><b style="font-size: 190% ; color: black;">PantryNusantara</b></a>
+                            <a href="index.php" class="biolife-logo"><img src="assets/images/favicon.png" alt="biolife logo"><b style="font-size: 150% ; color: orange;">WarungPojok</b></a>
                             <div class="footer-phone-info">
                                 <i class="biolife-icon icon-head-phone"></i>
                                 <p class="r-info">

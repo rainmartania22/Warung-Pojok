@@ -146,10 +146,10 @@ session_start()
                             <?php if (isset($_SESSION['username'])): ?>
                                 <?php
                                 include 'admin/koneksi.php';
-                                $user_id = isset($_SESSION['id_user']) ? $_SESSION['id_user'] : null;
+                                $id_user = isset($_SESSION['id_user']) ? $_SESSION['id_user'] : null;
 
-                                if ($user_id) {
-                                    $query = "SELECT COUNT(*) as total FROM tb_pesanan WHERE id_user = '$user_id'";
+                                if ($id_user) {
+                                    $query = "SELECT COUNT(*) as total FROM tb_pesanan WHERE id_user = '$id_user'";
                                     $result = mysqli_query($koneksi, $query);
                                     $data = mysqli_fetch_assoc($result);
                                     $jumlah_item = isset($data['total']) ? $data['total'] : 0;
