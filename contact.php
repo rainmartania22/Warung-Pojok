@@ -372,7 +372,7 @@ session_start();
                             </div>
                             <div class="biolife-social inline">
                                 <ul class="socials">
-                                    <li><a href="https://www.instagram.com/bang.fannreign?igsh=MWh5NWxrcXdoeTV5Zw==" title="instagram" class="socail-btn"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                    <li><a href="https://www.instagram.com/yoikirain24_?igsh=ZG9jNjE0emRsY3lz/" title="instagram" class="socail-btn"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                                 </ul>
                             </div>
                         </section>
