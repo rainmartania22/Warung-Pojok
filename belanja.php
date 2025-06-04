@@ -418,7 +418,10 @@ session_start()
                                                         case 'sayuran':
                                                             echo '<li>Segar Dipanen Setiap Hari</li><li>Tanpa Obat-Obatan Berbahaya</li>';
                                                             break;
-                                                        case 'daging':
+                                                        case 'daging ayam':
+                                                            echo '<li>Daging Segar</li><li>Potongan Segar dan Berkualitas</li>';
+                                                            break;
+                                                        case 'daging sapi':
                                                             echo '<li>Daging Segar</li><li>Potongan Segar dan Berkualitas</li>';
                                                             break;
                                                         case 'buah':
@@ -430,7 +433,7 @@ session_start()
                                                         case 'bumbu masakan':
                                                             echo '<li>Bumbu Dapur Alami Langsung Dari Alam</li><li>Rempah-rempah Pilihan Terbaik</li>';
                                                             break;
-                                                        case 'makanan beku':
+                                                        case 'frozen food':
                                                             echo '<li>Kualitas Terjaga dengan Pembekuan</li><li>Siap Masak, Praktis & Higienis</li>';
                                                             break;
                                                         case 'bahan pokok':
