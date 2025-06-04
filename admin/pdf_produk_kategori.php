@@ -75,7 +75,7 @@ $html = '<html>
 </head>
 <body>
 
-<h1 align="center">Freshly.id</h1>
+<h1 align="center">WarungPojok</h1>
 <hr>
 <h1 align="center">LAPORAN PRODUK BERDASARKAN KATEGORI</h1>
 
