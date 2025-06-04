@@ -18,7 +18,7 @@ function query($query)
 
 // Query dengan JOIN antara tb_produk dan tb_kategori
 $data = query("SELECT tb_produk.id_produk, tb_produk.nm_produk, tb_produk.harga, tb_produk.stok, 
-                      tb_produk.ket, tb_produk.gambar, tb_kategori.nm_kategori
+                      tb_produk.desk, tb_produk.gambar, tb_kategori.nm_kategori
                FROM tb_produk 
                JOIN tb_kategori ON tb_produk.id_kategori = tb_kategori.id_kategori");
 
@@ -66,7 +66,7 @@ $html = '<html>
 </head>
 <body>
 
-<h1 align="center">Freshly.id</h1>
+<h1 align="center">WarungPojok</h1>
 <hr>
 <h1 align="center">LAPORAN DATA PRODUK</h1>
 
@@ -91,7 +91,7 @@ foreach ($data as $row) {
     <td><img src="produk_img/'. $row["gambar"].'" alt="Gambar"></td>
     <td>'.$row["nm_produk"].'</td>
     <td>'.$row["nm_kategori"].'</td>  
-    <td>'.$row["ket"].'</td>
+    <td>'.$row["desk"].'</td>
     <td>'.$formatted_harga.'</td> <!-- Harga dengan format Rp 6.400.000 -->
     <td>'.$row["stok"].'</td>
   </tr>
