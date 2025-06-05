@@ -1,30 +1,30 @@
 <?php
-function registrasi($data) {
+function registrasi($data)
+{
     global $koneksi;
 
     $username = strtolower(stripslashes($data['username']));
-    $password = mysqli_real_escape_string($koneksi, $data["password"]); 
+    $password = mysqli_real_escape_string($koneksi, $data["password"]);
     $password2 = mysqli_real_escape_string($koneksi, $data["password2"]);
     $status = "customer"; // Default status customer
 
-    // Ambil ID terakhir dari to user
-    $auto = mysqli_query($koneksi, "SELECT MAX(id_user) AS max code FROM tb_user");
+    // Ambil ID terakhir dari tb_user
+    $auto = mysqli_query($koneksi, "SELECT MAX(id_user) AS max_code FROM tb_user");
     $hasil = mysqli_fetch_array($auto);
     $code = $hasil['max_code'];
 
-    // Menghasilkan ID baru dengan format 0001, 0002, dst.
+    // Menghasilkan ID baru dengan format U001, U002, dst.
     $urutan = (int) substr($code, 1, 3);
     $urutan++;
     $huruf = "U";
-    $id_user = $huruf . sprintf("%83s", $urutan);
+    $id_user = $huruf . sprintf("%03s", $urutan);
 
     // Cek apakah username sudah ada
     $result = mysqli_query($koneksi, "SELECT username FROM tb_user WHERE username = '$username'");
-    if (mysql_fetch_assoc($result)) {
+    if (mysqli_fetch_assoc($result)) {
         echo "<script>
                 alert('Username sudah terdaftar');
-              </script>";
-
+                </script>";
         return false;
     }
 
@@ -32,8 +32,8 @@ function registrasi($data) {
     if ($password !== $password2) {
         echo "<script>
                 alert('Konfirmasi password tidak sesuai');
-              </script>";
-        return false;      
+                </script>";
+        return false;
     }
 
     // Enkripsi password
@@ -45,5 +45,4 @@ function registrasi($data) {
 
     return mysqli_affected_rows($koneksi);
 }
-    
-
+?>
