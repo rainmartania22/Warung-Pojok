@@ -258,7 +258,9 @@ session_start();
                         <div class="contact-info-container sm-margin-top-27px xs-margin-bottom-60px xs-margin-top-60px">
                             <h4 class="box-title">Kontak Kami</h4>
                             <p class="frst-desc">
-                               Ada pertanyaan atau ingin pesan? Hubungi kami kapan saja!, Kami siap melayani Anda dengan cepat dan ramah, Jangan ragu untuk menghubungi kami melalui telepon, email, atau kunjungi toko kami di alamat yang tertera di bawah ini. Kami akan segera merespons pertanyaan Anda dan membantu Anda dengan segala kebutuhan Anda. Terima kasih telah memilih WarungPojok sebagai mitra belanja Anda!
+                            Ada pertanyaan, kritik, saran, atau ingin memesan sesuatu? Kami siap membantu Anda kapan saja!
+                            Tim WarungPojok melayani dengan cepat, ramah, dan profesional. Jangan ragu untuk menghubungi kami melalui telepon, email, atau datang langsung ke lokasi kami.
+                            Kami akan segera merespons pertanyaan Anda dan membantu segala kebutuhan Anda. Terima kasih telah mempercayai WarungPojok sebagai pilihan belanja Anda!
                             </p>
                             <ul class="addr-info">
                                 <li>
