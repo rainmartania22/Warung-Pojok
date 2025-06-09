@@ -100,7 +100,7 @@ foreach ($data as $row) {
     <td><img src="produk_img/'. $row["gambar"].'" alt="Gambar"></td>
     <td>'.$row["nm_produk"].'</td>
     <td>'.$row["nm_kategori"].'</td>  
-    <td>'.$row["ket"].'</td>
+    <td>'.$row["desk"].'</td>
     <td>'.$formatted_harga.'</td>
     <td>'.$row["stok"].'</td>
   </tr>
