@@ -303,7 +303,7 @@ session_start();
                                                 <ins><span class="price-amount"><span class="currencySymbol">Hanya Mulai&nbsp;</span>Rp. 20.000</span></ins>
                                             </div>
                                             <div class="buttons">
-                                                <a href="belanja" class="btn add-to-cart-btn">Lihat Produk</a>
+                                                <a href="Belanja.php" class="btn add-to-cart-btn">Lihat Produk</a>
                                             </div>
                                         </div>
                                     </div>
@@ -328,7 +328,7 @@ session_start();
                                                 <ins><span class="price-amount"><span class="currencySymbol">Hanya Mulai&nbsp;</span>Rp. 20.000</span></ins>
                                             </div>
                                             <div class="buttons">
-                                                <a href="belanja" class="btn add-to-cart-btn">Lihat Produk</a>
+                                                <a href="belanja.php" class="btn add-to-cart-btn">Lihat Produk</a>
                                             </div>
                                         </div>
                                     </div>
@@ -353,7 +353,7 @@ session_start();
                                                 <ins><span class="price-amount"><span class="currencySymbol">Hanya Mulai&nbsp;</span>Rp. 20.000</span></ins>
                                             </div>
                                             <div class="buttons">
-                                                <a href="belanja" class="btn add-to-cart-btn">Lihat Produk</a>
+                                                <a href="belanja.php" class="btn add-to-cart-btn">Lihat Produk</a>
                                             </div>
                                         </div>
                                     </div>
@@ -378,7 +378,7 @@ session_start();
                                                 <ins><span class="price-amount"><span class="currencySymbol">Hanya Mulai&nbsp;</span>Rp. 20.000</span></ins>
                                             </div>
                                             <div class="buttons">
-                                                <a href="belanja" class="btn add-to-cart-btn">Lihat Produk</a>
+                                                <a href="belanja.php" class="btn add-to-cart-btn">Lihat Produk</a>
                                             </div>
                                         </div>
                                     </div>
@@ -497,7 +497,7 @@ session_start();
                                 <p class="third-line">Food Heaven Made Easy kedengarannya seperti nama layanan pengiriman makanan yang luar biasa lezat, tetapi jangan terkecoh...</p>
                                 <div class="product-detail">
                                     <p class="txt-price"><span>Hanya:&nbsp;</span>Rp. 20.000</p>
-                                    <a href="#" class="btn add-to-cart-btn">Keranjang</a>
+                                    <a href= cart.php class="btn add-to-cart-btn">Keranjang</a>
                                 </div>
                             </div>
                         </div>
