@@ -660,7 +660,7 @@ session_start();
                                 <i class="biolife-icon icon-head-phone"></i>
                                 <p class="r-info">
                                     <span>Ada Pertanyaan ?</span>
-                                    <span>083865177778</span>
+                                    <span>0838-6517-7778</span>
                                 </p>
                             </div>
                         </section>
@@ -685,7 +685,7 @@ session_start();
                                         <li>
                                             <p class="info-item">
                                                 <i class="biolife-icon icon-phone"></i>
-                                                <b class="desc">Telepon: 083865177778</b>
+                                                <b class="desc">Telepon: 0838-6517-7778</b>
                                             </p>
                                             </li>
                                             <li>

@@ -486,8 +486,8 @@ if (isset($_POST['add_to_cart'])) {
                                     <span class="stt-price">Rp. <?= number_format($diskon, 0, ',', '.'); ?></span>
                                 </div>
                                 <div class="subtotal-line">
-                                    <b class="att-name">Total Bayar</b>
-                                    <span class="att-price">Rp. <?= number_format($total_bayar, 0, ',', '.'); ?></span>
+                                    <b class="stt-name">Total Bayar</b>
+                                    <span class="stt-price">Rp. <?= number_format($total_bayar, 0, ',', '.'); ?></span>
                                 </div>
                                 <div class="tax-fee">
                                 </div>
@@ -584,7 +584,7 @@ if (isset($_POST['add_to_cart'])) {
                                         <i class="biolife-icon icon-head-phone"></i>
                                         <p class="r-info">
                                             <span>Ada Pertanyaan ?</span>
-                                            <span>083865177778</span>
+                                            <span>0838-6517-7778</span>
                                         </p>
                                     </div>
                                 </section>

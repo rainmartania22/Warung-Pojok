@@ -478,7 +478,7 @@ if (isset($_POST['add_to_cart'])) {
                                 <i class="biolife-icon icon-head-phone"></i>
                                 <p class="r-info">
                                     <span>Ada Pertanyaan ?</span>
-                                    <span>083865177778</span>
+                                    <span>0838-6517-7778</span>
                                 </p>
                             </div>
                         </section>
@@ -501,7 +501,7 @@ if (isset($_POST['add_to_cart'])) {
                                     <li>
                                         <p class="info-item">
                                             <i class="biolife-icon icon-phone"></i>
-                                            <b class="desc">Telepon: 083865177778</b>
+                                            <b class="desc">Telepon: 0838-6517-7778</b>
                                         </p>
                                     </li>
                                     <li>
