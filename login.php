@@ -103,7 +103,7 @@ if (isset($_POST["login"])) {
     <div class="container">
         <nav class="biolife-nav">
             <ul>
-                <li class="nav-item"><a href="index-2.html" class="permal-link">Beranda</a></li>
+                <li class="nav-item"><a href="index.php" class="permal-link">Beranda</a></li>
                 <li class="nav-item"><span class="current-page">Login</span></li>
             </ul>
         </nav>
